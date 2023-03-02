@@ -1,0 +1,15 @@
+# Quartus-generated files
+*.rpt
+*.smsg
+*.summary
+*.sof
+*.pof
+
+# Temporary files
+*.bak
+*.jic
+*.qpf~
+*.qsf~
+*.qws~
+*.qdf~
+*.bak~

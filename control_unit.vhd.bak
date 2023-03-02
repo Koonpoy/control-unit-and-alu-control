@@ -1,0 +1,27 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+
+entity MIPS_decoder is
+    Port ( instruction : in std_logic_vector(31 downto 0);
+           opcode : out std_logic_vector(5 downto 0);
+           rs : out std_logic_vector(4 downto 0);
+           rt : out std_logic_vector(4 downto 0);
+           rd : out std_logic_vector(4 downto 0);
+           shamt : out std_logic_vector(4 downto 0);
+           funct : out std_logic_vector(5 downto 0);
+           is_add : out std_logic);
+end MIPS_decoder;
+
+architecture Behavioral of MIPS_decoder is
+begin
+    opcode <= instruction(31 downto 26);
+    rs <= instruction(25 downto 21);
+    rt <= instruction(20 downto 16);
+    rd <= instruction(15 downto 11);
+    shamt <= instruction(10 downto 6);
+    funct <= instruction(5 downto 0);
+    
+    -- Check if the instruction is ADD (opcode=0, funct=32)
+    is_add <= '1' when (opcode = "000000" and funct = "100000") else '0';
+end Behavioral;
